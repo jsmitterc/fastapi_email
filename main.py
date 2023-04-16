@@ -1,7 +1,6 @@
 from __future__ import print_function
 from fastapi import FastAPI
 from quickstart import main
-from borrador import gmail_create_draft
 import os.path
 import base64
 from email.message import EmailMessage
