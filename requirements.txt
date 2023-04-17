@@ -1,4 +1,6 @@
 fastapi==0.95.1
 google_api_python_client==2.85.0
 google_auth_oauthlib==1.0.0
+jose==1.0.0
+passlib==1.7.4
 protobuf==4.22.3
