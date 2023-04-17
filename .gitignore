@@ -2,3 +2,4 @@
 index.php
 env/
 __pycache__/
+.gitignore
