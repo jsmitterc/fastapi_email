@@ -63,7 +63,7 @@ async def send_message(data: Email):
         x = source_code.replace("$salesId$" , str(data.sales_id))
 
         message.set_content("")
-        message.add_alternative(source_code, subtype='html')
+        message.add_alternative(x, subtype='html')
 
         message['To'] = data.email
         message['From'] = 'poshlashcl@gmail.com'
