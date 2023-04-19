@@ -22,7 +22,7 @@ origins = ["*"]
 
 
 
-app = FastAPI()
+app = FastAPI(docs_url=None)
 
 
 app.add_middleware(
