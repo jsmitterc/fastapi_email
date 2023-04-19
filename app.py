@@ -70,10 +70,9 @@ async def send_message(data: Email):
 
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
-            try:
-                creds.refresh(Request())
-            except HttpError as error:
-                return 1
+            creds.refresh(Request())
+            with open('token.json', 'w') as token:
+                token.write(creds.to_json())
     try:
         service = build('gmail', 'v1', credentials=creds)
         message = EmailMessage()
