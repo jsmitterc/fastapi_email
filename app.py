@@ -36,7 +36,7 @@ app.add_middleware(
 @app.get("/")
 async def root():
     creds = None
-    SCOPES = ['https://www.googleapis.com/auth/gmail.compose']
+    SCOPES = ['https://www.googleapis.com/auth/gmail.send']
 
 
 
@@ -67,9 +67,13 @@ async def send_message(data: Email):
 
     if os.path.exists('token.json'):
         creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
+            try:
+                creds.refresh(Request())
+            except HttpError as error:
+                return 1
     try:
         service = build('gmail', 'v1', credentials=creds)
         message = EmailMessage()
